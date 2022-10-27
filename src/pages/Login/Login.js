@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
-import { Toast } from "react-bootstrap";
 
 const Login = () => {
-  const { signIn, loading } = useContext(AuthContext);
+  const { signIn, setLoading } = useContext(AuthContext);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
@@ -19,13 +18,16 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         form.reset();
+        console.log(user);
         if (user.emailVerified) {
           navigate(from, {replace:true});
         }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
