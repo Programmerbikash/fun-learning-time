@@ -59,10 +59,10 @@ const Header = () => {
               <Nav.Link className="fw-semibold ms-2" href="/courses">
                 Courses
               </Nav.Link>
-              <Nav.Link className="fw-semibold ms-2" href="#link">
-                FAQ
+              <Nav.Link className="fw-semibold ms-2" href="/error">
+                4O4 Page
               </Nav.Link>
-              <Nav.Link className="fw-semibold ms-2 me-2" href="#link">
+              <Nav.Link className="fw-semibold ms-2 me-2" href="/blog">
                 Blog
               </Nav.Link>
               <ThemeSetUp></ThemeSetUp>

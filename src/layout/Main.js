@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { Outlet } from "react-router";
 import Footer from "../pages/Shared/Footer/Footer";

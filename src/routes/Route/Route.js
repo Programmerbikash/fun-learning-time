@@ -2,8 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import Details from "../../others/Details/Details";
 import ProtectedRoute from "../../others/ProtectedRoute/ProtectedRoute";
+import Blog from "../../pages/Blog/Blog";
 import Category from "../../pages/Category/Category";
 import Courses from "../../pages/Courses/Courses";
+import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
@@ -48,10 +50,18 @@ export const router = createBrowserRouter([
           element: <Register></Register>,
         },
         {
+          path: "/blog",
+          element: <Blog></Blog>,
+        },
+        {
           path: "/newsCategory/:id",
           element: <PrivateRoute><ProtectedRoute></ProtectedRoute></PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/newsCategory/${params.id}`)
         }
       ],
-    },
+  },
+  {
+    path: '*',
+    element: <ErrorPage></ErrorPage>
+  }
 ]);
