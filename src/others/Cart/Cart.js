@@ -1,6 +1,7 @@
 import React from "react";
 import "./Cart.css";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Cart = ({ content }) => {
   const {
@@ -26,18 +27,19 @@ const Cart = ({ content }) => {
               alt=""
             />
             <h5 className="text-center fs-6 fw-semibold pt-3">{title}</h5>
-            <p className="fw-normal text-dark pt-3">
+            <div className="fw-normal text-dark pt-3">
               {details.length > 200 ? (
                 <>
-                  {details.slice(0, 200) + "..."}
-                  <Link className="ms-3" to={`/details/${_id}`}>
-                    Read More
+                  <p>{details.slice(0, 200) + "..."}</p>
+                  <Link className="ms-3" to={`/category/${_id}`}>
+                    <Button>Read More</Button>
                   </Link>
                 </>
               ) : (
                 <>{details}</>
               )}
-            </p>
+            </div>
+            
           </div>
         </div>
       </div>
