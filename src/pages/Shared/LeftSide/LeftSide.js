@@ -12,7 +12,7 @@ const LeftSide = () => {
     // console.log(categories);
     return (
         <div>
-            <h1>Left Side {categories.length}</h1>
+            <h1 className='fw-bold fs-3'>Course Category</h1>
             <div>
                 {
                     categories.map((category) => (
