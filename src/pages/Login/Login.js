@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import { Toast } from "react-bootstrap";
 
 const Login = () => {
   const { signIn, loading } = useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
 
   const handleLoginWithEmailAndPassword = (e) => {
     e.preventDefault();
@@ -15,7 +19,11 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-          console.log(user);
+        console.log(user);
+        form.reset();
+        if (user.emailVerified) {
+          navigate(from, {replace:true});
+        }
       })
       .catch((error) => console.error(error));
   };

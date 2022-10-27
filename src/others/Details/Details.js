@@ -6,7 +6,7 @@ import { FaBeer, FaBook, FaEye, FaStar, FaStreetView } from 'react-icons/fa';
 
 const Details = () => {
   const allContent = useLoaderData();
-  const { title, details, rating, time, lectures,  author, total_view, image_url } = allContent;
+  const { _id, title, details, rating, time, lectures,  author, total_view, image_url } = allContent;
   console.log(allContent);
   return (
     <>
@@ -25,7 +25,7 @@ const Details = () => {
         <Card.Text>
         {details}
         </Card.Text>
-        <Button variant="primary">Get premium access</Button>
+        <Link to={`/newsCategory/${_id}`}><Button variant="primary">Get premium access</Button></Link>
       </Card.Body>
         <Card.Footer className="text-center fw-bold fs-2">Total Time: {time} Hours</Card.Footer>
     </Card>

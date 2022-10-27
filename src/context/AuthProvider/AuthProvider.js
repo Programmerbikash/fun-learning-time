@@ -10,21 +10,23 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const signIn = (email, password) => {
-        // setLoading(true);
+        setLoading(true);
       return signInWithEmailAndPassword(auth, email, password);
       
     };
     
     const createUserWithEmail = (email, password) => {
-        // setLoading(true);
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const updateUserProfile = (profile) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, profile)
     }
 
     const emailVerification = () => {
+        setLoading(true);
         return sendEmailVerification(auth.currentUser);
     }
 
@@ -42,6 +44,7 @@ const AuthProvider = ({ children }) => {
     }, [])
     
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 

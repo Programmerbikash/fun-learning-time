@@ -1,12 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import Details from "../../others/Details/Details";
+import ProtectedRoute from "../../others/ProtectedRoute/ProtectedRoute";
 import Category from "../../pages/Category/Category";
 import Courses from "../../pages/Courses/Courses";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import LeftSide from "../../pages/Shared/LeftSide/LeftSide";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -44,6 +46,11 @@ export const router = createBrowserRouter([
         {
           path: "/register",
           element: <Register></Register>,
+        },
+        {
+          path: "/newsCategory/:id",
+          element: <PrivateRoute><ProtectedRoute></ProtectedRoute></PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:5000/newsCategory/${params.id}`)
         }
       ],
     },
