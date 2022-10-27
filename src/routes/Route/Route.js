@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
         {
           path: "/",
           element: <Home></Home>,
-          loader: () => fetch(`http://localhost:5000/details/`)
+          loader: () => fetch(`https://fun-learning-times-server.vercel.app/details/`)
         },
         {
           path: "/category",
@@ -29,17 +29,17 @@ export const router = createBrowserRouter([
         {
           path: "/courses",
           element: <Courses></Courses>,
-          loader: () => fetch(`http://localhost:5000/details/`)
+          loader: () => fetch(`https://fun-learning-times-server.vercel.app/details/`)
         },
         {
           path: "/details/:id",
           element: <Category></Category>,
-          loader: ({params}) => fetch(`http://localhost:5000/details/${params.id}`)
+          loader: ({params}) => fetch(`https://fun-learning-times-server.vercel.app/details/${params.id}`)
         },
         {
           path: "/category/:id",
           element: <Details></Details>,
-          loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+          loader: ({params}) => fetch(`https://fun-learning-times-server.vercel.app/category/${params.id}`)
         },
         {
           path: "/login",
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         {
           path: "/newsCategory/:id",
           element: <PrivateRoute><ProtectedRoute></ProtectedRoute></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/newsCategory/${params.id}`)
+          loader: ({params}) => fetch(`https://fun-learning-times-server.vercel.app/newsCategory/${params.id}`)
         }
       ],
   },
