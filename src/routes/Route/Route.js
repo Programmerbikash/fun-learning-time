@@ -8,6 +8,7 @@ import Courses from "../../pages/Courses/Courses";
 import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
+import Pdf from "../../pages/Pdf/Pdf";
 import Register from "../../pages/Register/Register";
 import LeftSide from "../../pages/Shared/LeftSide/LeftSide";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
         {
           path: "/blog",
           element: <Blog></Blog>,
+        },
+        {
+          path: "/pdf",
+          element: <Pdf></Pdf>,
         },
         {
           path: "/newsCategory/:id",

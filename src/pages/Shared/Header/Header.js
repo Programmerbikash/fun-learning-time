@@ -65,6 +65,9 @@ const Header = () => {
               <Nav.Link className="fw-semibold ms-2 me-2" href="/blog">
                 Blog
               </Nav.Link>
+              <Nav.Link className="fw-semibold ms-2 me-2" href="/pdf">
+                pdf
+              </Nav.Link>
               <ThemeSetUp></ThemeSetUp>
               <Nav.Link className="ms-2" href="/login">
                 {user?.photoURL ? (

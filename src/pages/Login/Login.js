@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { Toast } from "react-bootstrap";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Login = () => {
   const { signIn, setLoading } = useContext(AuthContext);
+  const [show, setShow] = useState(false);
+  const [error, setError] = useState(null);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
@@ -18,13 +21,17 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
+        setError(null);
         form.reset();
         console.log(user);
         if (user.emailVerified) {
           navigate(from, {replace:true});
         }
       })
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      })
       .finally(() => {
         setLoading(false);
       });
@@ -36,6 +43,16 @@ const Login = () => {
         <div className="screen">
           <div className="screen__content">
             <form className="login">
+            <Toast
+                onClose={() => setShow(false)}
+                show={show}
+                delay={3000}
+                autohide
+              >
+                <Toast.Header>
+                  <strong className="me-auto">{error}</strong>
+                </Toast.Header>
+              </Toast>
               <div className="login__field">
                 <i className="login__icon fas fa-user"></i>
                 <input
@@ -54,7 +71,7 @@ const Login = () => {
                   placeholder="Password"
                 />
               </div>
-              <button className="button login__submit">
+              <button onClick={() => setShow(true)} className="button login__submit">
                 <span className="button__text">Log In Now</span>
                 <i className="button__icon fas fa-chevron-right"></i>
               </button>
